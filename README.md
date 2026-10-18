@@ -15,7 +15,7 @@ Both homes are **modular**: a bento grid of small widgets (cry check, growth, va
 
 ### Hackathon positioning
 
-CrySense is positioned for **Sustainability & Social Impact**, with **Social Good** as the submission category: it supports caregivers through the newborn and postpartum period with practical, privacy-conscious tools. For judging, use the deployed Google-backed flow so Gemini's contribution is visible; the local mock mode is only an offline fallback. See [docs/HACKATHON_ALIGNMENT.md](docs/HACKATHON_ALIGNMENT.md).
+CrySense is positioned for **Sustainability & Social Impact**, with **Social Good** as the submission category: it supports caregivers through the newborn and postpartum period with practical, privacy-conscious tools. For judging, use the deployed Google-backed flow so Gemini's contribution is visible; the local mock mode is only an offline fallback.
 
 ---
 
