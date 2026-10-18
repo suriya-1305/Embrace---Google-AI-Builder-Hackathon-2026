@@ -63,7 +63,7 @@ The conversation offers general, gentle support, not therapy, diagnosis or medic
 - Profile holds family details, Log out, Get help, preferences, permissions and data controls. Desktop has a persistent sidebar; mobile has a Profile button and role-appropriate bottom tabs.
 - Baby Comfort & appointments and all My Space care groups remain visible, not collapsible.
 - Since last shows today's counts and navigable feed/sleep/diaper cells, opening `/baby/today` rather than Insights. Timeline date inputs and twelve-event pages keep longer histories bounded.
-- Logged-out users see a public Embrace home with a sign-in entry at `/signin`; email-link completion is preserved. Interaction feedback respects reduced-motion preferences. Homepage photograph: Unsplash image `photo-1491013516836-7db643ee125a` under the [Unsplash license](https://unsplash.com/license).
+- Logged-out users see a public Embrace home with a sign-in entry at `/signin`; email-link completion is preserved. Interaction feedback respects reduced-motion preferences.
 - Returning users go straight home. New profiles finish setup without a blanket permissions detour; sensitive features request consent when needed.
 - Manual log dialogs retain unfinished drafts in memory per account and baby until save or logout. Refreshing or closing the tab clears these unsaved drafts; saved offline events still use the encrypted IndexedDB queue.
 - Dialogs have an explicit Close button, keyboard focus trapping, stable initial focus and disabled dismissal during log saves. Loading states do not imply completed care or vaccine coverage.
@@ -152,7 +152,6 @@ crysense/
 | [GOOGLE_INTEGRATION.md](docs/GOOGLE_INTEGRATION.md) | Step-by-step: Firebase, Firestore, Gemini, Speech-to-Text, Cloud Run, Hosting |
 | [SAFETY.md](docs/SAFETY.md) | Clinical boundaries, what is out of scope, release gates |
 | [DESIGN.md](docs/DESIGN.md) | Visual system: nightlight concept, tokens, components |
-| [DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md) | The 3-minute hackathon demo, shot by shot |
 
 ## Principles built into the code
 
