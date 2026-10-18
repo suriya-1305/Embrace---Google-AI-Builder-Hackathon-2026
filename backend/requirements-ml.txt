@@ -1,0 +1,3 @@
+# Optional: CRY_MODEL=yamnet (large; build a separate image if you enable it)
+tensorflow>=2.16
+tensorflow-hub>=0.16

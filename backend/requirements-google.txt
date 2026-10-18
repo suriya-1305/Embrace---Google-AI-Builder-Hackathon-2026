@@ -1,0 +1,5 @@
+# Google integrations (enable with env toggles; see docs/GOOGLE_INTEGRATION.md)
+google-genai>=1.0.0              # AI_PROVIDER=gemini, SPEECH_PROVIDER=gemini
+google-cloud-firestore>=2.16.0   # DATA_STORE=firestore
+google-cloud-speech>=2.26.0      # SPEECH_PROVIDER=google_stt (Speech-to-Text V2)
+firebase-admin>=6.5.0            # AUTH_MODE=firebase

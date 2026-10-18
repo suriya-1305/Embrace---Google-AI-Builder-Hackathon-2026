@@ -1,0 +1,40 @@
+{
+  "rulesetId": "baby_warning_signs",
+  "version": "1.0.0-draft",
+  "clinicalReview": "pending",
+  "reviewNote": "Draft based on common paediatric urgent-care guidance. Must be reviewed and localised by a qualified clinician before any release.",
+  "levels": ["emergency", "urgent", "seek_advice", "none"],
+  "questions": [
+    {"field": "breathingDifficulty", "label": "Trouble breathing, grunting, or pauses in breathing", "type": "boolean"},
+    {"field": "blueOrGreyColour", "label": "Lips or skin look blue, grey, very pale or blotchy", "type": "boolean"},
+    {"field": "floppyOrHardToWake", "label": "Unusually floppy, unresponsive or hard to wake", "type": "boolean"},
+    {"field": "seizure", "label": "Fit or seizure (stiffening, jerking, staring)", "type": "boolean"},
+    {"field": "weakOrHighPitchedCry", "label": "Weak, very high-pitched or non-stop crying that is not like usual", "type": "boolean"},
+    {"field": "greenOrBloodyVomit", "label": "Repeated vomiting, or green or bloody vomit", "type": "boolean"},
+    {"field": "bloodInStool", "label": "Blood in the stool", "type": "boolean"},
+    {"field": "swollenAbdomen", "label": "Swollen or hard tummy", "type": "boolean"},
+    {"field": "recentFallOrInjury", "label": "A recent fall or possible injury", "type": "boolean"},
+    {"field": "possibleIngestion", "label": "May have swallowed something harmful", "type": "boolean"},
+    {"field": "poorFeeding", "label": "Feeding much less than usual", "type": "boolean"},
+    {"field": "fewerWetDiapers", "label": "Far fewer wet diapers than usual", "type": "boolean"},
+    {"field": "parentThinksSeriouslyWrong", "label": "You feel something is seriously wrong", "type": "boolean"},
+    {"field": "tempC", "label": "Measured temperature (°C), if you have one", "type": "number", "optional": true}
+  ],
+  "rules": [
+    {"id": "B-EM-1", "level": "emergency", "when": {"all": [{"field": "breathingDifficulty", "op": "eq", "value": true}]}, "message": "Breathing trouble needs emergency help now."},
+    {"id": "B-EM-2", "level": "emergency", "when": {"all": [{"field": "blueOrGreyColour", "op": "eq", "value": true}]}, "message": "A blue, grey or very pale colour needs emergency help now."},
+    {"id": "B-EM-3", "level": "emergency", "when": {"all": [{"field": "floppyOrHardToWake", "op": "eq", "value": true}]}, "message": "A floppy or hard-to-wake baby needs emergency help now."},
+    {"id": "B-EM-4", "level": "emergency", "when": {"all": [{"field": "seizure", "op": "eq", "value": true}]}, "message": "A fit or seizure needs emergency help now."},
+    {"id": "B-UR-1", "level": "urgent", "when": {"all": [{"field": "ageDays", "op": "lt", "value": 90}, {"field": "tempC", "op": "gte", "value": 38}]}, "message": "A temperature of 38°C or more in a baby under 3 months needs a doctor today, without waiting."},
+    {"id": "B-UR-2", "level": "urgent", "when": {"all": [{"field": "weakOrHighPitchedCry", "op": "eq", "value": true}]}, "message": "A weak, very high-pitched or unusual non-stop cry should be checked by a doctor urgently."},
+    {"id": "B-UR-3", "level": "urgent", "when": {"all": [{"field": "greenOrBloodyVomit", "op": "eq", "value": true}]}, "message": "Repeated, green or bloody vomit should be checked by a doctor urgently."},
+    {"id": "B-UR-4", "level": "urgent", "when": {"all": [{"field": "bloodInStool", "op": "eq", "value": true}]}, "message": "Blood in the stool should be checked by a doctor urgently."},
+    {"id": "B-UR-5", "level": "urgent", "when": {"all": [{"field": "swollenAbdomen", "op": "eq", "value": true}]}, "message": "A swollen or hard tummy should be checked by a doctor urgently."},
+    {"id": "B-UR-6", "level": "urgent", "when": {"all": [{"field": "recentFallOrInjury", "op": "eq", "value": true}]}, "message": "After a fall or possible injury, get a doctor to check your baby."},
+    {"id": "B-UR-7", "level": "urgent", "when": {"all": [{"field": "possibleIngestion", "op": "eq", "value": true}]}, "message": "If your baby may have swallowed something harmful, get medical help now."},
+    {"id": "B-UR-8", "level": "urgent", "when": {"all": [{"field": "parentThinksSeriouslyWrong", "op": "eq", "value": true}]}, "message": "Trust your sense that something is wrong. Get your baby checked now, whatever a recording shows."},
+    {"id": "B-SA-1", "level": "seek_advice", "when": {"all": [{"field": "poorFeeding", "op": "eq", "value": true}]}, "message": "Feeding much less than usual is worth a call to your doctor or health worker today."},
+    {"id": "B-SA-2", "level": "seek_advice", "when": {"all": [{"field": "fewerWetDiapers", "op": "eq", "value": true}]}, "message": "Far fewer wet diapers can be a sign of dehydration. Call your doctor or health worker today."},
+    {"id": "B-SA-3", "level": "seek_advice", "when": {"all": [{"field": "ageDays", "op": "gte", "value": 90}, {"field": "tempC", "op": "gte", "value": 38}]}, "message": "A temperature of 38°C or more is worth a call to your doctor for advice."}
+  ]
+}

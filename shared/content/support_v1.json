@@ -1,0 +1,24 @@
+{
+  "contentId": "support_contacts",
+  "version": "1.0.0-draft",
+  "verification": "pending",
+  "verificationNote": "Numbers and services must be verified with official sources and reviewed locally before release.",
+  "regions": {
+    "IN": {
+      "name": "India",
+      "emergency": [
+        {"label": "National emergency", "number": "112", "detail": "Police, fire and ambulance"},
+        {"label": "Ambulance", "number": "108", "detail": "Available in most states"}
+      ],
+      "support": [
+        {"label": "Tele-MANAS mental health support", "number": "14416", "detail": "Free, 24x7, many Indian languages"}
+      ]
+    }
+  },
+  "overwhelmedGuidance": [
+    "If crying is making you feel you might lose control, put your baby down on their back in a safe, empty cot and step away for a few minutes.",
+    "Never shake a baby.",
+    "Call someone you trust, or one of the support numbers above.",
+    "Come back when you feel calmer. Crying itself will not harm your baby."
+  ]
+}

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+dist-preview/
+__pycache__/
+.pytest_cache/
+*.pyc
+.env
+.env.local
+.env.production
+.firebase/

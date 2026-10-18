@@ -1,0 +1,10 @@
+{
+  "name": "Embrace",
+  "short_name": "Embrace",
+  "description": "Care for baby. Space for you.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F6F8F7",
+  "theme_color": "#23685E",
+  "icons": [{ "src": "/embrace-mark.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

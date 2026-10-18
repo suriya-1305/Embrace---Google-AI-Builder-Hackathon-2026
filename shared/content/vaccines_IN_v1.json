@@ -1,0 +1,27 @@
+{
+  "contentId": "vaccine_schedule_IN",
+  "version": "1.0.0-draft",
+  "verification": "pending",
+  "verificationNote": "Draft based on India's Universal Immunization Programme for the first year. Schedules vary by state and change over time. Verify with the official schedule and your paediatrician before release.",
+  "region": "IN",
+  "doses": [
+    {"id": "bcg", "name": "BCG", "atWeeks": 0},
+    {"id": "opv0", "name": "OPV (birth dose)", "atWeeks": 0},
+    {"id": "hepb0", "name": "Hepatitis B (birth dose)", "atWeeks": 0},
+    {"id": "opv1", "name": "OPV 1", "atWeeks": 6},
+    {"id": "penta1", "name": "Pentavalent 1", "atWeeks": 6},
+    {"id": "rota1", "name": "Rotavirus 1", "atWeeks": 6},
+    {"id": "fipv1", "name": "fIPV 1", "atWeeks": 6},
+    {"id": "pcv1", "name": "PCV 1", "atWeeks": 6},
+    {"id": "opv2", "name": "OPV 2", "atWeeks": 10},
+    {"id": "penta2", "name": "Pentavalent 2", "atWeeks": 10},
+    {"id": "rota2", "name": "Rotavirus 2", "atWeeks": 10},
+    {"id": "opv3", "name": "OPV 3", "atWeeks": 14},
+    {"id": "penta3", "name": "Pentavalent 3", "atWeeks": 14},
+    {"id": "rota3", "name": "Rotavirus 3", "atWeeks": 14},
+    {"id": "fipv2", "name": "fIPV 2", "atWeeks": 14},
+    {"id": "pcv2", "name": "PCV 2", "atWeeks": 14},
+    {"id": "mr1", "name": "Measles-Rubella 1", "atWeeks": 39},
+    {"id": "pcvb", "name": "PCV booster", "atWeeks": 39}
+  ]
+}

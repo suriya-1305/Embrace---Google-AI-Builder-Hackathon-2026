@@ -1,0 +1,168 @@
+# Embrace
+
+Care for baby. Space for you.
+
+Live app: [embrace-family.web.app](https://embrace-family.web.app/). Sample families: [open the demo](https://embrace-family.web.app/?demo=1). The original project-named Hosting site remains available. The Hosting deployment script targets the branded site by default for this project.
+
+Embrace is a mobile-first web app with two separate care spaces:
+
+- **Baby care**: log feeds, sleep and diapers by tap or voice, see a seven-day pattern that is honest about missing data, and use a prominent cry check that screens for urgent warning signs first, checks cry presence/audio quality, then suggests routine checks from recent logs. It never labels a cause.
+- **My space** (the mother's): a private daily check-in, voice journal, recovery log, medicine reminders, a questionnaire workflow and summaries she chooses to share.
+
+Both homes are **modular**: a bento grid of small widgets (cry check, growth, vaccines, milestones, soothing sounds, water, one good thing, follow-ups, partner nudges, a 15-minute QR share, a letter to the baby, and more). Families switch modules on or off, so each home stays simple. See [docs/MODULES.md](docs/MODULES.md).
+
+> CrySense is a prototype for the Google Cloud AI Builder Cup 2026. It is **not a medical device**. It never diagnoses a baby's needs from a cry, never infers depression from a voice, and never contacts anyone automatically. All safety content is marked *clinical review: pending*.
+
+### Hackathon positioning
+
+CrySense is positioned for **Sustainability & Social Impact**, with **Social Good** as the submission category: it supports caregivers through the newborn and postpartum period with practical, privacy-conscious tools. For judging, use the deployed Google-backed flow so Gemini's contribution is visible; the local mock mode is only an offline fallback. See [docs/HACKATHON_ALIGNMENT.md](docs/HACKATHON_ALIGNMENT.md).
+
+---
+
+## Quick start
+
+### 1. Browser-only demo (no backend, no Google account)
+
+```bash
+cd frontend
+npm install
+npm run dev            # http://localhost:5173
+```
+
+Choose a sample family, with no password. Use the Test family selector in the app to switch among all three households. Everything runs in the browser with synthetic data. Demo recordings let you try the audio flow without a microphone.
+
+Three mock families are available in the selector:
+
+| Fictional email | Scenario |
+|---|---|
+| `demo30@crysense.test` | One baby, last 30 days of care logs |
+| `demo4months@crysense.test` | One baby, 120-day history, private mother records, vaccination history and reminders |
+| `twins4months@crysense.test` | Two babies in one household, 120-day histories, mother records and reminders |
+
+These accounts work locally or in the deployed [sample-family experience](https://dauntless-ember-511818-g5.web.app/?demo=1). Care records stay in the browser, with separate sessions from real Firebase accounts. Sound review, voice-log extraction, journal transcription and journal reflection use real Gemini through a dedicated demo gateway after consent. The gateway cannot read real family records and does not store recordings, journal text or generated reflections. Sample records are not written to real accounts. Switching sample families resets the active screen and unfinished form state.
+
+Public demo AI has a shared atomic budget of six requests per minute and sixty per UTC day. A quota or provider failure is shown explicitly, never substituted with a simulated result. Gemini needs a network connection. Real-account AI requests are separate from this demo budget. Expert staffing, message delivery and external clinician services are not fabricated by the demo.
+
+### Baby sound check
+
+The `/baby/sound` page replaces Cry check; old `/baby/cry` links redirect. Preparation is brief, with a collapsible warning-sign list. Urgent signs still block recording. Sample clips and technical recording details are collapsed by default.
+
+For real and test accounts, the Baby API forwards a clear WAV clip plus at most eight structured care logs from the last 24 hours to Gemini, after both `audio_capture` and `ai_processing` consent. Sample context is validated against allowlisted infant IDs and sanitized on the server. Names, user IDs, private notes and unrelated detail fields are excluded. Silent, invalid, heavily noisy or otherwise blocked clips are not forwarded. Raw audio is not stored by the application server.
+
+Gemini returns enum-only sound observations (crying, babbling, other sound or uncertainty), pitch/pattern, and ordinary care-check categories. The server supplies the suggestion wording from the recent logs. It does not classify hunger, gas, pain or illness from a voice or produce cause probabilities. Model requests have a 45-second timeout; multi-stage voice requests have a 105-second browser deadline. Unavailable reviews are labelled explicitly rather than replaced by a fake Gemini result. Reflection safety flags are set by the server, not generated by the model.
+
+### Emi
+
+Emi is the single Embrace AI companion, on its own `/me/emi` page. Voice journal stays separate at `/me/journal`, with a link to Emi. Mothers can type or record a message, review a transcript before sending, and optionally read replies aloud using browser speech synthesis. Journal text is not automatically passed between pages. Conversations are kept only in the current UI session and are not saved to journal records. Provider/model metadata is internal; the UI uses a small accessible Emi information tooltip.
+
+The conversation offers general, gentle support, not therapy, diagnosis or medical treatment. Bounded recent turns provide context; safety prompts and deterministic explicit-danger checks direct people to human support when needed. Public demo chat uses the shared AI budget, while its fixed urgent-support response remains available without a model call or quota charge. Real account chat requires maternal ownership and AI consent.
+
+### Navigation and completion
+
+- Baby home order: Since last, Quick log, Baby sound check, Insights, Health & milestones, Comfort & appointments. The Insights preview uses the selected baby's name and care logs. Insights defaults to that baby, with an All babies filter still available. Community remains a separate destination.
+- Profile holds family details, Log out, Get help, preferences, permissions and data controls. Desktop has a persistent sidebar; mobile has a Profile button and role-appropriate bottom tabs.
+- Baby Comfort & appointments and all My Space care groups remain visible, not collapsible.
+- Since last shows today's counts and navigable feed/sleep/diaper cells, opening `/baby/today` rather than Insights. Timeline date inputs and twelve-event pages keep longer histories bounded.
+- Logged-out users see a public Embrace home with a sign-in entry at `/signin`; email-link completion is preserved. Interaction feedback respects reduced-motion preferences. Homepage photograph: Unsplash image `photo-1491013516836-7db643ee125a` under the [Unsplash license](https://unsplash.com/license).
+- Returning users go straight home. New profiles finish setup without a blanket permissions detour; sensitive features request consent when needed.
+- Manual log dialogs retain unfinished drafts in memory per account and baby until save or logout. Refreshing or closing the tab clears these unsaved drafts; saved offline events still use the encrypted IndexedDB queue.
+- Dialogs have an explicit Close button, keyboard focus trapping, stable initial focus and disabled dismissal during log saves. Loading states do not imply completed care or vaccine coverage.
+
+### Care records after a visit
+
+Vaccines show normal status badges by default. Edit mode supports correcting dates, marking confirmed doses and removing mistaken history entries. A camera capture or gallery photo can create an editable draft; the original is shown for review. Photos are resized on-device and are not stored by the server. AI extraction can make mistakes and never updates records automatically.
+
+Doctor visit includes a follow-up form for measured weight, length/height, head circumference, administered vaccines, notes and the next appointment. The caregiver confirms the original record before saving. Unknown/out-of-range or future photo-derived facts are omitted for manual review. Follow-up reports use stable request IDs, and unchanged growth points are checked before retry, to reduce duplicate updates. A saved next appointment appears on the Baby-home Doctor visit module.
+
+### Family-care features
+
+- Onboard up to six babies together and filter a combined 7/30/120-day timeline by baby or event type.
+- Save event logs to an encrypted, user-partitioned IndexedDB queue while offline; reconnect retries use client UUIDs to avoid duplicates.
+- Create an expiring, view-only caregiver link after explicit sharing consent. Recipients see seven days of structured baby logs, not private notes or maternal records.
+- Record sleep position, surface, loose items and room sharing. CDC/AAP-linked reminders and the lactation/nutrition resources provide general guidance; clinical review is still pending.
+- View count-only summaries for the selected timeline period; missing logs do not imply missing care.
+- Submit community questions for moderation, report published content, and publish answers only through a server-managed moderator account with `expertVerified: true`. Assigning that flag requires an operational credential-review process; no expert staffing or response-time guarantee is included.
+
+To use Firebase sign-in and the deployed APIs from a local browser, use `npm run dev:live` instead. It loads the ignored `frontend/.env.production` configuration; new profiles created in this mode are saved to the live CrySense services.
+
+### 2. Full stack locally (APIs with mock providers)
+
+```bash
+cd backend
+pip install -r requirements-dev.txt
+python -m pytest -q
+cd ..
+./scripts/dev.sh               # both APIs on :8081 (one process, shared store), web :5173 in live API mode
+```
+
+Locally both APIs run in one process (`backend/dev_combined.py`) so they share the in-memory store, as the two Cloud Run services share Firestore in production. To run them separately, use `DATA_STORE=firestore` (or the Firestore emulator).
+
+### 3. With Google services
+
+Follow [docs/GOOGLE_INTEGRATION.md](docs/GOOGLE_INTEGRATION.md). Every integration is one environment variable:
+
+| Toggle | Mock (default) | Google |
+|---|---|---|
+| `DATA_STORE` | `memory` | `firestore` (Cloud Firestore) |
+| `AI_PROVIDER` | `mock` | `gemini` (Gemini API or Vertex AI) |
+| `SPEECH_PROVIDER` | `mock` | `google_stt` (Speech-to-Text V2) or `gemini` |
+| `CRY_MODEL` | `mock` | `yamnet` (AudioSet "Baby cry, infant cry") |
+| `AUTH_MODE` | `mock` | `firebase` (Firebase Authentication) |
+| `VITE_API_MODE` (web) | `mock` | `live` |
+| `VITE_AUTH_MODE` (web) | `demo` | `firebase` |
+
+---
+
+## Repository layout
+
+```
+crysense/
+├── frontend/            React + TypeScript PWA (Vite)
+│   └── src/
+│       ├── api/         contract.ts (one interface), live.ts (HTTP), mock/ (in-browser API)
+│       ├── modules/     module registry, catalogue (defs.tsx), home widgets, Tile
+│       ├── features/    onboarding, baby, mother, shared (help, settings, module library, shared view)
+│       ├── components/  glass layout, moon recorder, safety panel, consent prompt
+│       ├── lib/         WAV encode/decode, recorder, audio quality, demo samples
+│       └── styles/      tokens.css (day and night palettes), app.css
+├── backend/
+│   ├── crysense/        shared core: config, auth, store, ai, speech, audio, safety, screening, domain
+│   ├── baby_api/        Cloud Run service: Baby API
+│   ├── mother_api/      Cloud Run service: Mother API
+│   ├── tests/           pytest suite
+│   └── Dockerfile       one image, SERVICE=baby | mother
+├── shared/              versioned, reviewable content used by BOTH backend and mock
+│   ├── rules/           baby warning signs, mother recovery flags
+│   ├── instruments/     questionnaire (placeholder until an approved instrument is licensed)
+│   └── content/         support contacts for India
+├── firebase/            Hosting config, Firestore and Storage rules
+├── scripts/             dev.sh, deploy_cloud_run.sh
+└── docs/                architecture, API, flows, data model, Google setup, safety, design, demo
+```
+
+## Documentation
+
+| Document | What it covers |
+|---|---|
+| [MODULES.md](docs/MODULES.md) | Every module, how to add one, platform features, privacy rules |
+| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | System design, module separation, provider toggles, security |
+| [FLOWS.md](docs/FLOWS.md) | Every user flow, screen by screen, with diagrams |
+| [API.md](docs/API.md) | Every endpoint, request and response |
+| [DATA_MODEL.md](docs/DATA_MODEL.md) | Firestore collections and document shapes |
+| [GOOGLE_INTEGRATION.md](docs/GOOGLE_INTEGRATION.md) | Step-by-step: Firebase, Firestore, Gemini, Speech-to-Text, Cloud Run, Hosting |
+| [SAFETY.md](docs/SAFETY.md) | Clinical boundaries, what is out of scope, release gates |
+| [DESIGN.md](docs/DESIGN.md) | Visual system: nightlight concept, tokens, components |
+| [DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md) | The 3-minute hackathon demo, shot by shot |
+
+## Principles built into the code
+
+1. **Two care subjects, two spaces.** The partner can open baby records; only the mother can open hers (`403` otherwise). Tested.
+2. **Gemini extracts, code validates.** Every AI field is checked by deterministic code and confirmed by a person before saving. Fields the model assumed are labelled "Assumed, please check".
+3. **Safety rules run first and always win.** Warning signs are checked by versioned JSON rules, never by a model.
+4. **Uncertainty is a valid answer.** Poor audio returns "Can't tell from this recording", never a guess.
+5. **Consent per purpose.** Microphone, transcription, AI, storage, sharing and research are separate switches, checked on the server.
+6. **Nothing sensitive in logs.** Request logs carry method, route template, status and latency only. Raw audio is never stored.
+
+## Licence and data
+
+All data in this repository is synthetic. Contact numbers in `shared/content` must be verified locally before release. Any validated questionnaire must be licensed and translated before it replaces the placeholder.

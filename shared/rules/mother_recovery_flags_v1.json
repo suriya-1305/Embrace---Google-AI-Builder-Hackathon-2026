@@ -1,0 +1,27 @@
+{
+  "rulesetId": "mother_recovery_flags",
+  "version": "1.0.0-draft",
+  "clinicalReview": "pending",
+  "reviewNote": "Draft based on common postnatal warning signs. Must be reviewed and localised by a qualified clinician before any release.",
+  "levels": ["emergency", "support_now", "urgent", "seek_advice", "none"],
+  "questions": [
+    {"field": "heavyBleeding", "label": "Bleeding that soaks a pad in an hour, or large clots", "type": "boolean"},
+    {"field": "chestPainOrBreathless", "label": "Chest pain or sudden shortness of breath", "type": "boolean"},
+    {"field": "severeHeadacheOrVision", "label": "Severe headache, or changes in your vision", "type": "boolean"},
+    {"field": "calfPainSwelling", "label": "Pain, swelling or redness in one leg", "type": "boolean"},
+    {"field": "woundRedOrDischarge", "label": "Stitches or wound that are red, hot, or leaking", "type": "boolean"},
+    {"field": "breastRedHotWithFever", "label": "A red, hot, painful breast with fever or chills", "type": "boolean"},
+    {"field": "thoughtsOfHarm", "label": "Thoughts of harming yourself or your baby", "type": "boolean"},
+    {"field": "tempC", "label": "Measured temperature (°C), if you have one", "type": "number", "optional": true}
+  ],
+  "rules": [
+    {"id": "M-EM-1", "level": "emergency", "when": {"all": [{"field": "heavyBleeding", "op": "eq", "value": true}]}, "message": "Very heavy bleeding needs emergency help now."},
+    {"id": "M-EM-2", "level": "emergency", "when": {"all": [{"field": "chestPainOrBreathless", "op": "eq", "value": true}]}, "message": "Chest pain or sudden breathlessness needs emergency help now."},
+    {"id": "M-SN-1", "level": "support_now", "when": {"all": [{"field": "thoughtsOfHarm", "op": "eq", "value": true}]}, "message": "You deserve support right now. Please talk to someone today. You are not alone, and this can get better with help."},
+    {"id": "M-UR-1", "level": "urgent", "when": {"all": [{"field": "severeHeadacheOrVision", "op": "eq", "value": true}]}, "message": "A severe headache or vision changes after birth should be checked by a doctor urgently."},
+    {"id": "M-UR-2", "level": "urgent", "when": {"all": [{"field": "calfPainSwelling", "op": "eq", "value": true}]}, "message": "Pain or swelling in one leg should be checked by a doctor urgently."},
+    {"id": "M-UR-3", "level": "urgent", "when": {"all": [{"field": "tempC", "op": "gte", "value": 38}]}, "message": "A fever of 38°C or more after birth should be checked by a doctor today."},
+    {"id": "M-SA-1", "level": "seek_advice", "when": {"all": [{"field": "woundRedOrDischarge", "op": "eq", "value": true}]}, "message": "A red, hot or leaking wound is worth a call to your doctor or midwife today."},
+    {"id": "M-SA-2", "level": "seek_advice", "when": {"all": [{"field": "breastRedHotWithFever", "op": "eq", "value": true}]}, "message": "A red, hot, painful breast with fever is worth a call to your doctor or midwife today."}
+  ]
+}

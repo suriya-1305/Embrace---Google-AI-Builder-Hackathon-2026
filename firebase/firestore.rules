@@ -1,0 +1,21 @@
+rules_version = '2';
+// All reads and writes go through the Cloud Run APIs (Admin SDK, own service
+// accounts), which enforce authorisation in code. Browsers get no direct access.
+// The narrow read rules below are defence in depth if direct reads are ever enabled.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+    // Caregivers in the household may read baby records.
+    match /infantRecords/{infantId}/{rest=**} {
+      allow read: if request.auth != null
+        && request.auth.uid in get(/databases/$(database)/documents/infantRecords/$(infantId)).data.caregiverUids;
+    }
+    // Only the mother may read her own records. Household membership is not enough.
+    match /maternalRecords/{motherId}/{rest=**} {
+      allow read: if request.auth != null
+        && request.auth.uid == get(/databases/$(database)/documents/maternalRecords/$(motherId)).data.ownerUid;
+    }
+  }
+}

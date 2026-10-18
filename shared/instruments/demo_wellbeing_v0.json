@@ -1,0 +1,22 @@
+{
+  "instrumentId": "demo_wellbeing",
+  "version": "0.1.0-placeholder",
+  "status": "placeholder",
+  "title": "Weekly well-being check (demo placeholder)",
+  "notice": "This is a non-clinical placeholder used to demonstrate deterministic scoring and the support pathway. Replace it with an approved, validated instrument only after reviewing version, translation and usage rights.",
+  "recallPeriod": "the past 7 days",
+  "items": [
+    {"id": "q1", "text": "How often have you been able to rest when you had the chance?", "options": [{"label": "Most of the time", "score": 0}, {"label": "Sometimes", "score": 1}, {"label": "Rarely", "score": 2}, {"label": "Not at all", "score": 3}]},
+    {"id": "q2", "text": "How often have you felt able to enjoy small moments?", "options": [{"label": "As much as usual", "score": 0}, {"label": "A bit less than usual", "score": 1}, {"label": "Much less than usual", "score": 2}, {"label": "Not at all", "score": 3}]},
+    {"id": "q3", "text": "How often have you felt worried or on edge?", "options": [{"label": "Never", "score": 0}, {"label": "Sometimes", "score": 1}, {"label": "Often", "score": 2}, {"label": "Most of the time", "score": 3}]},
+    {"id": "q4", "text": "How supported have you felt by the people around you?", "options": [{"label": "Very supported", "score": 0}, {"label": "Somewhat supported", "score": 1}, {"label": "A little", "score": 2}, {"label": "Not at all", "score": 3}]},
+    {"id": "q5", "text": "Have thoughts of harming yourself come to mind?", "options": [{"label": "Never", "score": 0}, {"label": "Hardly ever", "score": 1}, {"label": "Sometimes", "score": 2}, {"label": "Often", "score": 3}], "safetyItem": true}
+  ],
+  "safety": {"itemId": "q5", "triggerAtOrAbove": 1},
+  "bands": [
+    {"min": 0, "max": 4, "id": "low", "label": "Demo band: lower", "followUp": "Thank you for checking in. Keep doing the small things that help, and check in again next week."},
+    {"min": 5, "max": 9, "id": "middle", "label": "Demo band: middle", "followUp": "Some things sound hard right now. Consider talking with your doctor, midwife or someone you trust this week."},
+    {"min": 10, "max": 15, "id": "high", "label": "Demo band: higher", "followUp": "It sounds like a lot is weighing on you. Please talk with your doctor or midwife soon. Support helps, and you deserve it."}
+  ],
+  "bandNote": "Demo bands are not clinical cut-offs."
+}

@@ -1,0 +1,11 @@
+*
+!cloudbuild.yaml
+!backend/
+!backend/**
+!shared/
+!shared/**
+**/__pycache__/
+**/.pytest_cache/
+**/*.pyc
+**/.env*
+**/.venv/

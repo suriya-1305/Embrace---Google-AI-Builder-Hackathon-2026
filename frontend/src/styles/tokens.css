@@ -1,0 +1,162 @@
+/*
+  CrySense design tokens.
+  Concept: a nursery nightlight. Day is soft lavender-milk with frosted glass;
+  night (auto 8 pm to 6 am) dims everything for 3 a.m. feeds so the screen
+  never jolts a sleepy parent or baby awake.
+  Baby care is tinted periwinkle; the mother's private space is tinted rose.
+*/
+:root {
+  color-scheme: light;
+  --font-display: "Manrope", "DM Sans", sans-serif;
+  --font-ui: "DM Sans", "Manrope", sans-serif;
+
+  /* Type scale (1.25 ratio, 16px base) */
+  --t-xs: 0.8125rem;
+  --t-sm: 0.9375rem;
+  --t-md: 1rem;
+  --t-lg: 1.25rem;
+  --t-xl: 1.625rem;
+  --t-2xl: 2.125rem;
+
+  /* Palette: day */
+  --base: #F6F8F7;
+  --ink: #253D37;
+  --ink-soft: #526B64;
+  --ink-faint: #687D76;
+  --line: rgba(114, 94, 89, 0.14);
+
+  --ambient: linear-gradient(135deg, #E7F2EF 0%, #F4F6F8 48%, #F8EBEF 100%);
+  --glass: rgba(255, 255, 255, 0.52);
+  --glass-strong: rgba(255, 255, 255, 0.74);
+  --glass-edge: rgba(255, 255, 255, 0.86);
+  --glass-shadow: 0 12px 36px rgba(30, 58, 50, 0.08), 0 2px 8px rgba(30, 58, 50, 0.035);
+  --glass-inset: inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 rgba(255, 255, 255, 0.28);
+
+  --baby: #23685E;
+  --baby-wash: rgba(35, 104, 94, 0.10);
+  --mom: #A65061;
+  --mom-wash: rgba(201, 120, 131, 0.2);
+  --mint: #64836E;
+  --accent: var(--baby);
+  --accent-wash: var(--baby-wash);
+  --on-accent: #FFFFFF;
+
+  --urgent: #B42343;
+  --urgent-wash: rgba(214, 64, 96, 0.14);
+  --caution: #94600F;
+  --caution-wash: rgba(232, 176, 70, 0.2);
+  --ok: #23775F;
+  --ok-wash: rgba(80, 180, 150, 0.18);
+
+  --blob-1: #F4DFD8;
+  --blob-2: #F6E9E4;
+  --blob-3: #E4ECE4;
+  --blob-4: #EAE9F0;
+
+  /* Shape: radius follows hierarchy, not one value everywhere */
+  --r-shell: 20px;
+  --r-card: 8px;
+  --r-control: 8px;
+  --r-pill: 999px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --tab-h: 74px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --base: #171919;
+    --ambient: linear-gradient(135deg, #12221D 0%, #231F27 52%, #151C1B 100%);
+    --ink: #F0E7DF;
+    --ink-soft: #C7BCB3;
+    --ink-faint: #9B9189;
+    --line: rgba(240, 231, 223, 0.12);
+    --glass: rgba(36, 39, 38, 0.58);
+    --glass-strong: rgba(44, 48, 46, 0.78);
+    --glass-edge: rgba(240, 231, 223, 0.12);
+    --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+    --glass-inset: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    --baby: #8CCDBD;
+    --baby-wash: rgba(140, 205, 189, 0.16);
+    --mom: #E29AA4;
+    --mom-wash: rgba(226, 154, 164, 0.16);
+    --on-accent: #24191A;
+    --urgent: #FF8DA4;
+    --urgent-wash: rgba(255, 110, 140, 0.16);
+    --caution: #F2C46B;
+    --caution-wash: rgba(242, 196, 107, 0.14);
+    --ok: #7FD8BB;
+    --ok-wash: rgba(127, 216, 187, 0.14);
+    --blob-1: #2D2563;
+    --blob-2: #452246;
+    --blob-3: #173A40;
+    --blob-4: #3B3320;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --base: #171919;
+  --ambient: linear-gradient(135deg, #12221D 0%, #231F27 52%, #151C1B 100%);
+  --ink: #F0E7DF;
+  --ink-soft: #C7BCB3;
+  --ink-faint: #9B9189;
+  --line: rgba(240, 231, 223, 0.12);
+  --glass: rgba(36, 39, 38, 0.58);
+  --glass-strong: rgba(44, 48, 46, 0.78);
+  --glass-edge: rgba(240, 231, 223, 0.12);
+  --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  --glass-inset: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --baby: #8CCDBD;
+  --baby-wash: rgba(140, 205, 189, 0.16);
+  --mom: #E29AA4;
+  --mom-wash: rgba(226, 154, 164, 0.16);
+  --on-accent: #24191A;
+  --urgent: #FF8DA4;
+  --urgent-wash: rgba(255, 110, 140, 0.16);
+  --caution: #F2C46B;
+  --caution-wash: rgba(242, 196, 107, 0.14);
+  --ok: #7FD8BB;
+  --ok-wash: rgba(127, 216, 187, 0.14);
+  --blob-1: #2D2563;
+  --blob-2: #452246;
+  --blob-3: #173A40;
+  --blob-4: #3B3320;
+}
+
+/* Module hues: each module owns one soft colour for its tile glow and icon. */
+:root {
+  --hue-lilac: #8B7CF0; --hue-blush: #E0789F; --hue-mint: #3FAE8F;
+  --hue-butter: #D9A23A; --hue-sky: #4C9BDB; --hue-peach: #EE8A5C;
+}
+:root[data-theme="dark"] {
+  --hue-lilac: #ABA0FF; --hue-blush: #F59CBE; --hue-mint: #6FD3B4;
+  --hue-butter: #F0C46A; --hue-sky: #84BEF0; --hue-peach: #F6A880;
+}
+
+/* Red night light: red light disturbs night vision least. For 3 a.m. feeds. */
+:root[data-theme="red"] {
+  --ambient: linear-gradient(135deg, #200B0D, #140708);
+  color-scheme: dark;
+  --base: #140708;
+  --ink: #F2B8A8; --ink-soft: #C88C7E; --ink-faint: #9A675C;
+  --line: rgba(242, 184, 168, 0.14);
+  --glass: rgba(60, 14, 14, 0.5); --glass-strong: rgba(74, 18, 18, 0.78);
+  --glass-edge: rgba(255, 140, 120, 0.16);
+  --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.6); --glass-inset: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --baby: #F08A6E; --baby-wash: rgba(240, 120, 90, 0.16);
+  --mom: #F4907A; --mom-wash: rgba(244, 130, 110, 0.16);
+  --on-accent: #1A0808;
+  --urgent: #FF9C8A; --urgent-wash: rgba(255, 120, 100, 0.18);
+  --caution: #F2B36B; --caution-wash: rgba(242, 179, 107, 0.14);
+  --ok: #E9A88C; --ok-wash: rgba(233, 168, 140, 0.14);
+  --blob-1: #3A0C10; --blob-2: #2E0A0A; --blob-3: #260808; --blob-4: #331208;
+  --hue-lilac: #E89080; --hue-blush: #F09A88; --hue-mint: #E8A07E;
+  --hue-butter: #F0B27A; --hue-sky: #E6957F; --hue-peach: #F5A07A;
+}

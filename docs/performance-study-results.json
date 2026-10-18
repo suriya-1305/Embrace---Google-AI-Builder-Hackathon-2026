@@ -1,0 +1,636 @@
+{
+  "study_timestamp_utc": "2026-10-18T10:53:58.684597+00:00",
+  "measurement_scope": "Local ASGI HTTP benchmark plus in-process synthetic validation checks; no cloud services called.",
+  "metadata": {
+    "application": "CrySense prototype",
+    "application_version": "0.1.0",
+    "build_revision": "unavailable (workspace has no Git revision)",
+    "region": "Local Windows host; cloud region not applicable",
+    "environment": "Windows-11-10.0.26100-SP0",
+    "python": "3.14.4",
+    "logical_cpu_count": 16,
+    "data_store": "memory",
+    "auth_mode": "mock",
+    "ai_provider": "mock",
+    "ai_model": "mock-rules-0.1",
+    "speech_provider": "mock",
+    "cry_model": "mock-energy-0.1"
+  },
+  "dataset": {
+    "voice_utterances": 12,
+    "voice_data": "fictional manually labeled short text; no personal or clinical data",
+    "audio": "deterministic 6-second mono 16 kHz generated tone/WAV; not a baby recording",
+    "stored_demo_records": "application's fictional seeded memory-store records"
+  },
+  "load_test": {
+    "request_count_per_scenario_per_concurrency": 50,
+    "concurrency_levels": [
+      1,
+      8,
+      24
+    ],
+    "scenarios": [
+      {
+        "scenario": "public_health",
+        "concurrency": 1,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 3.19,
+          "p95": 3.95,
+          "mean": 3.17,
+          "max": 4.66
+        },
+        "throughput_requests_per_second": 313.49,
+        "mean_response_bytes": 133.0,
+        "wall_time_seconds": 0.159
+      },
+      {
+        "scenario": "authenticated_infant_profile",
+        "concurrency": 1,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 4.61,
+          "p95": 5.98,
+          "mean": 4.63,
+          "max": 6.94
+        },
+        "throughput_requests_per_second": 214.84,
+        "mean_response_bytes": 156.0,
+        "wall_time_seconds": 0.233
+      },
+      {
+        "scenario": "authenticated_event_list",
+        "concurrency": 1,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 6.13,
+          "p95": 8.11,
+          "mean": 6.13,
+          "max": 8.41
+        },
+        "throughput_requests_per_second": 162.49,
+        "mean_response_bytes": 37449.0,
+        "wall_time_seconds": 0.308
+      },
+      {
+        "scenario": "authenticated_baseline",
+        "concurrency": 1,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 5.63,
+          "p95": 8.09,
+          "mean": 5.99,
+          "max": 16.18
+        },
+        "throughput_requests_per_second": 166.21,
+        "mean_response_bytes": 1016.0,
+        "wall_time_seconds": 0.301
+      },
+      {
+        "scenario": "authenticated_maternal_home",
+        "concurrency": 1,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 4.75,
+          "p95": 6.41,
+          "mean": 4.91,
+          "max": 7.51
+        },
+        "throughput_requests_per_second": 202.48,
+        "mean_response_bytes": 539.0,
+        "wall_time_seconds": 0.247
+      },
+      {
+        "scenario": "consented_voice_draft_mock_ai",
+        "concurrency": 1,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 4.49,
+          "p95": 5.59,
+          "mean": 4.67,
+          "max": 13.41
+        },
+        "throughput_requests_per_second": 212.95,
+        "mean_response_bytes": 389.3,
+        "wall_time_seconds": 0.235
+      },
+      {
+        "scenario": "consented_journal_reflection_mock_ai",
+        "concurrency": 1,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 4.86,
+          "p95": 7.27,
+          "mean": 4.99,
+          "max": 7.44
+        },
+        "throughput_requests_per_second": 199.35,
+        "mean_response_bytes": 333.0,
+        "wall_time_seconds": 0.251
+      },
+      {
+        "scenario": "consented_synthetic_sound_review_mock",
+        "concurrency": 1,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 12.34,
+          "p95": 16.99,
+          "mean": 12.65,
+          "max": 26.4
+        },
+        "throughput_requests_per_second": 78.85,
+        "mean_response_bytes": 1977.0,
+        "wall_time_seconds": 0.634
+      },
+      {
+        "scenario": "public_health",
+        "concurrency": 8,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 11.74,
+          "p95": 42.15,
+          "mean": 15.32,
+          "max": 44.94
+        },
+        "throughput_requests_per_second": 488.63,
+        "mean_response_bytes": 133.0,
+        "wall_time_seconds": 0.102
+      },
+      {
+        "scenario": "authenticated_infant_profile",
+        "concurrency": 8,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 13.86,
+          "p95": 29.87,
+          "mean": 15.49,
+          "max": 32.09
+        },
+        "throughput_requests_per_second": 486.26,
+        "mean_response_bytes": 156.0,
+        "wall_time_seconds": 0.103
+      },
+      {
+        "scenario": "authenticated_event_list",
+        "concurrency": 8,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 31.29,
+          "p95": 41.19,
+          "mean": 31.48,
+          "max": 43.08
+        },
+        "throughput_requests_per_second": 239.78,
+        "mean_response_bytes": 37449.0,
+        "wall_time_seconds": 0.209
+      },
+      {
+        "scenario": "authenticated_baseline",
+        "concurrency": 8,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 30.51,
+          "p95": 55.47,
+          "mean": 33.82,
+          "max": 57.23
+        },
+        "throughput_requests_per_second": 229.0,
+        "mean_response_bytes": 1016.0,
+        "wall_time_seconds": 0.218
+      },
+      {
+        "scenario": "authenticated_maternal_home",
+        "concurrency": 8,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 14.59,
+          "p95": 26.89,
+          "mean": 17.02,
+          "max": 30.29
+        },
+        "throughput_requests_per_second": 429.41,
+        "mean_response_bytes": 539.0,
+        "wall_time_seconds": 0.116
+      },
+      {
+        "scenario": "consented_voice_draft_mock_ai",
+        "concurrency": 8,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 14.99,
+          "p95": 38.22,
+          "mean": 18.97,
+          "max": 40.1
+        },
+        "throughput_requests_per_second": 380.88,
+        "mean_response_bytes": 389.3,
+        "wall_time_seconds": 0.131
+      },
+      {
+        "scenario": "consented_journal_reflection_mock_ai",
+        "concurrency": 8,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 17.29,
+          "p95": 35.5,
+          "mean": 19.48,
+          "max": 48.27
+        },
+        "throughput_requests_per_second": 342.83,
+        "mean_response_bytes": 333.0,
+        "wall_time_seconds": 0.146
+      },
+      {
+        "scenario": "consented_synthetic_sound_review_mock",
+        "concurrency": 8,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 39.22,
+          "p95": 99.79,
+          "mean": 46.21,
+          "max": 100.92
+        },
+        "throughput_requests_per_second": 165.51,
+        "mean_response_bytes": 1977.0,
+        "wall_time_seconds": 0.302
+      },
+      {
+        "scenario": "public_health",
+        "concurrency": 24,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 30.0,
+          "p95": 75.4,
+          "mean": 33.77,
+          "max": 79.91
+        },
+        "throughput_requests_per_second": 583.2,
+        "mean_response_bytes": 133.0,
+        "wall_time_seconds": 0.086
+      },
+      {
+        "scenario": "authenticated_infant_profile",
+        "concurrency": 24,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 51.42,
+          "p95": 112.7,
+          "mean": 57.54,
+          "max": 131.91
+        },
+        "throughput_requests_per_second": 331.82,
+        "mean_response_bytes": 156.0,
+        "wall_time_seconds": 0.151
+      },
+      {
+        "scenario": "authenticated_event_list",
+        "concurrency": 24,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 84.86,
+          "p95": 137.44,
+          "mean": 85.66,
+          "max": 151.09
+        },
+        "throughput_requests_per_second": 247.6,
+        "mean_response_bytes": 37449.0,
+        "wall_time_seconds": 0.202
+      },
+      {
+        "scenario": "authenticated_baseline",
+        "concurrency": 24,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 80.09,
+          "p95": 115.72,
+          "mean": 77.3,
+          "max": 139.58
+        },
+        "throughput_requests_per_second": 262.04,
+        "mean_response_bytes": 1016.0,
+        "wall_time_seconds": 0.191
+      },
+      {
+        "scenario": "authenticated_maternal_home",
+        "concurrency": 24,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 56.54,
+          "p95": 134.28,
+          "mean": 61.22,
+          "max": 155.13
+        },
+        "throughput_requests_per_second": 309.22,
+        "mean_response_bytes": 539.0,
+        "wall_time_seconds": 0.162
+      },
+      {
+        "scenario": "consented_voice_draft_mock_ai",
+        "concurrency": 24,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 33.18,
+          "p95": 66.03,
+          "mean": 37.67,
+          "max": 69.03
+        },
+        "throughput_requests_per_second": 509.37,
+        "mean_response_bytes": 389.3,
+        "wall_time_seconds": 0.098
+      },
+      {
+        "scenario": "consented_journal_reflection_mock_ai",
+        "concurrency": 24,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 44.67,
+          "p95": 99.02,
+          "mean": 47.55,
+          "max": 115.66
+        },
+        "throughput_requests_per_second": 420.71,
+        "mean_response_bytes": 333.0,
+        "wall_time_seconds": 0.119
+      },
+      {
+        "scenario": "consented_synthetic_sound_review_mock",
+        "concurrency": 24,
+        "requests_requested": 50,
+        "responses_received": 50,
+        "http_status_counts": {
+          "200": 50
+        },
+        "transport_exception_counts": {},
+        "error_rate": 0.0,
+        "latency_ms": {
+          "p50": 114.28,
+          "p95": 179.54,
+          "mean": 114.41,
+          "max": 189.84
+        },
+        "throughput_requests_per_second": 185.76,
+        "mean_response_bytes": 1977.0,
+        "wall_time_seconds": 0.269
+      }
+    ],
+    "draft_field_evaluation": {
+      "dataset_size": 12,
+      "data_type": "fictional, manually labeled rule-coverage utterances; not blinded or clinical data",
+      "labeling_note": "An inferred clock time is evaluated by its modelInferred provenance, not by its runtime-dependent current-time value.",
+      "evaluated_fields": [
+        "type",
+        "amountMl",
+        "method",
+        "side",
+        "kind",
+        "startTimeLocal",
+        "timeProvenance",
+        "durationMin"
+      ],
+      "field_fact_counts": {
+        "true_positive": 44,
+        "false_positive": 0,
+        "false_negative": 0
+      },
+      "micro_precision": 1.0,
+      "micro_recall": 1.0,
+      "per_field_metrics": {
+        "type": {
+          "true_positive": 11,
+          "false_positive": 0,
+          "false_negative": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "amountMl": {
+          "true_positive": 3,
+          "false_positive": 0,
+          "false_negative": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "method": {
+          "true_positive": 2,
+          "false_positive": 0,
+          "false_negative": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "side": {
+          "true_positive": 2,
+          "false_positive": 0,
+          "false_negative": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "kind": {
+          "true_positive": 3,
+          "false_positive": 0,
+          "false_negative": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "startTimeLocal": {
+          "true_positive": 10,
+          "false_positive": 0,
+          "false_negative": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "timeProvenance": {
+          "true_positive": 11,
+          "false_positive": 0,
+          "false_negative": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "durationMin": {
+          "true_positive": 2,
+          "false_positive": 0,
+          "false_negative": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      },
+      "mismatches": [],
+      "status_counts": {
+        "needs_confirmation": 6,
+        "not_understood": 1,
+        "ready": 5
+      },
+      "confirmation_required_rate_proxy": 0.5833,
+      "user_correction_rate": null,
+      "user_correction_rate_note": "Not measured; no human reviewers or correction interactions were run.",
+      "clinical_accuracy": "Not evaluated."
+    },
+    "mock_sound_note_validity": {
+      "http_status": 200,
+      "synthetic_clip_seconds": 6.0,
+      "quality_ok": true,
+      "sound_label": "crying",
+      "raw_audio_retained": false,
+      "segments_returned_by_mock": 0,
+      "enum_and_clip_bounds": "See synthetic provider-injection checks; mock mode itself emits no timed segments."
+    }
+  },
+  "privacy_sound_checks": {
+    "checks": {
+      "missing_authentication": true,
+      "cross_household_infant_isolation": true,
+      "partner_cannot_read_maternal_record": true,
+      "revoked_ai_consent_blocks_processing": true,
+      "consent_change_audited_without_content": true,
+      "raw_audio_not_retained": true,
+      "saved_sound_records_contain_no_audio_payload": true,
+      "sound_segments_inside_clip_and_non_overlapping": true,
+      "invalid_sound_enum_rejected_without_output": true,
+      "data_deletion_removes_logs_but_keeps_profile": true
+    },
+    "passed": 10,
+    "total": 10,
+    "result": "PASS"
+  },
+  "interpretation_limits": [
+    "Mock-provider latency and availability do not measure Gemini, Speech-to-Text, Firebase Auth, Firestore, Cloud Run, or network-region performance.",
+    "Local results are not production SLOs, cost forecasts, clinical accuracy, or diagnostic evidence.",
+    "Draft metrics describe this small labeled rule-coverage set; review was not blinded and no human correction rate was measured."
+  ]
+}

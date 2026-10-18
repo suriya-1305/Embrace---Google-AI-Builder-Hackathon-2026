@@ -1,0 +1,14 @@
+{
+  "groups": [
+    { "id": "new-mothers", "name": "The early days", "description": "Company and everyday questions during the newborn months.", "icon": "heart" },
+    { "id": "twins-and-more", "name": "Twins & more", "description": "Shared routines, practical ideas and support for multiple babies.", "icon": "baby" },
+    { "id": "feeding-and-routines", "name": "Feeding & daily rhythms", "description": "Talk about logs, appointments and the routines that work for your family.", "icon": "bottle" },
+    { "id": "small-wins", "name": "Small wins", "description": "Share an encouraging moment or join a small, optional weekly challenge.", "icon": "sun" }
+  ],
+  "examples": [
+    { "id": "example-rest", "groupId": "new-mothers", "kind": "question", "title": "What small task did you ask someone to help with today?", "text": "I asked my sister to bring lunch so I could rest for a little while. What has helped you?", "authorName": "Example parent", "reply": "Having someone handle the dishes made a difference for me. Small practical help counts." },
+    { "id": "example-twins", "groupId": "twins-and-more", "kind": "experience", "title": "Separate logs helped us compare the day", "text": "We choose each baby's profile before logging. The combined timeline is useful when we talk through the evening together.", "authorName": "Example twin parent", "reply": "We also check the child's name before saving a feed. It helps us avoid mixing the records." },
+    { "id": "example-visit", "groupId": "feeding-and-routines", "kind": "question", "title": "What do you take to a baby follow-up visit?", "text": "We keep the immunization card and a short list of questions together. I add the clinician's measurements afterwards.", "authorName": "Example parent", "reply": "A photo of the card and the questions from our care log are useful for us. We confirm unclear entries with our care team." },
+    { "id": "example-win", "groupId": "small-wins", "kind": "challenge", "title": "This week: one small moment for yourself", "text": "An optional, no-pressure challenge: share a tiny moment that felt good, such as a warm drink or a chat with someone you trust.", "authorName": "Example community host", "reply": "I sat by the window with tea for five minutes. That was my small win today." }
+  ]
+}

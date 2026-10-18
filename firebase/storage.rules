@@ -1,0 +1,9 @@
+rules_version = '2';
+// The prototype processes audio in memory and stores none. Keep client access closed.
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
